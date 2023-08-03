@@ -1,0 +1,39 @@
+\documentclass[11pt, a4paper,]{report}
+\usepackage[italian]{babel}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{dirtree}
+\theoremstyle{definition}
+\newtheorem{definition}{Definizione}[section]
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage[citestyle=numeric]{biblatex}
+\addbibresource{database.bib}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks, colorlinks]{hyperref}
+\usepackage{changepage}
+\usepackage{longtable}
+\usepackage{pdfpages}
+\usepackage{layout}
+\usepackage{geometry}
+\geometry{a4paper,left=3cm, right=3cm, top=3cm,bottom=3cm, headheight=0cm}
+\graphicspath{{images/}}
+\hypersetup{allcolors=black}
+\begin{document}
+	\include{frontespizio}
+	\include{chapters/0_dedica}
+	\pagenumbering{roman}
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+	\include{chapters/0_sommarioIntro}
+	\include{chapters/1_Information_Retrieval}
+	\include{chapters/2_Embeddings}
+	\include{chapters/3_Large_Language_Models}
+	\printbibliography[heading=bibintoc]
+\end{document}
