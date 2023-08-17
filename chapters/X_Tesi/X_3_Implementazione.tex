@@ -14,16 +14,31 @@ Il notebook è stato eseguito su piattaforma Google Colab, che oltre all'esecuzi
 
 L'attenta scelta e l'integrazione di queste librerie hanno fornito gli strumenti necessari per l'elaborazione accurata e la valorizzazione dei dati, contribuendo significativamente al raggiungimento degli obiettivi di ricerca.
 
-L'implementazione del progetto è stata suddivisa in due fasi principali:
+L'implementazione del progetto è stata suddivisa in due fasi principali: ingestion e inferenza.
 
-La raccolta dei dati, descritta dal diagramma di flusso in figura 4.1:
+\subsection{Ingestion} 
+La fase di ingestion dei dati è descritta dal diagramma di flusso in figura 4.1:
 \begin{figure}[H]
     \centering
     \includegraphics[height=0.5\pdfpageheight]{images/ingest.png}\label{fig:ingest}
     \caption[Ingestion]{Il diagramma di flusso che descrive la fase di ingest dei dati.}
 \end{figure}
 
-Come si può osservare, i dati sono stati conservati su Google Drive e il job di ingestion ha permesso di leggere i 33 libri in formato pdf,
-suddividerli in pagine assegnando loro le informazioni derivanti dai metadati aggiungendo poi una parte di enrichment di tali informazioni 
+Come si può osservare, i dati sono stati conservati su Google Drive e il job di ingestion si occupa di leggere i 33 libri in formato pdf,
+suddividerli in pagine assegnando loro le informazioni derivanti dai metadati, è presente inoltre una parte di enrichment di tali informazioni 
 utilizzando il Large Language Model ``text-davinci-003'' di OpenAI per estrarre un riassunto di ogni pagina. Quest'ultima parte di enrichment è possibile espanderla ulteriormente
 utilizzando l'LLM per estrarre ulteriori informazioni, come ad esempio le entità presenti in ogni pagina, ma per il momento è stata tralasciata.
+
+Alimentato il database con le informazioni estratte, è possibile passare alla fase di inferenza.
+
+\subsection[Inferenza]{Inferenza e interazione con l'utente}
+
+La fase di inferenza e interazione con l'utente è descritta dal diagramma di flusso in figura 4.2:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.3\pdfpageheight]{images/Inference.png}\label{fig:infer}
+    \caption[Ingestion]{Il diagramma di flusso che descrive l'interazione dell'utente con il sistema di question answering.}
+\end{figure}
+
+\lipsum[1-4]
