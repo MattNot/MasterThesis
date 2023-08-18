@@ -28,6 +28,7 @@ Come si può osservare, i dati sono stati conservati su Google Drive e il job di
 suddividerli in pagine assegnando loro le informazioni derivanti dai metadati, è presente inoltre una parte di enrichment di tali informazioni 
 utilizzando il Large Language Model ``text-davinci-003'' di OpenAI per estrarre un riassunto di ogni pagina. Quest'ultima parte di enrichment è possibile espanderla ulteriormente
 utilizzando l'LLM per estrarre ulteriori informazioni, come ad esempio le entità presenti in ogni pagina, ma per il momento è stata tralasciata.
+La fase di enrichment inoltre serve ad arricchire i metadati di informazioni che, in seguito, il self-query retriever potrà utilizzare per interrogare il database.
 
 Alimentato il database con le informazioni estratte, è possibile passare alla fase di inferenza.
 
@@ -41,4 +42,20 @@ La fase di inferenza e interazione con l'utente è descritta dal diagramma di fl
     \caption[Ingestion]{Il diagramma di flusso che descrive l'interazione dell'utente con il sistema di question answering.}
 \end{figure}
 
-\lipsum[1-4]
+Il job di inferenza si occupa di ricevere dall'utente una query in linguaggio naturale, la query passa in input al SelfQueryRetriever, 
+che si occupa di interrogare il database e tramite una combinazione di selfquerying (riferimento ~\ref{fig:selfquery}) e similarity research restituisce una lista di documenti.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\pdfpagewidth]{images/selfquery.jpg}\label{fig:selfquery}
+    \caption[Ingestion]{Come funziona un sistema di selfquerying.}
+\end{figure}
+
+Tali documenti vengono poi passati ad una catena di question answering, come contesto e, nella implementazione scelta, vengono presi in considerazione dal modello di OpenAI ``text-davinci-003'' che ciclicamente migliora la risposta precedente (figura \ref{fig:refine}).
+In output vengono restituiti i documenti che il modello ha preso in considerazione e la risposta finale.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\pdfpagewidth]{images/refine.jpg}\label{fig:refine}
+    \caption[Ingestion]{Come funziona una chain di tipo refine.}
+\end{figure}
+
