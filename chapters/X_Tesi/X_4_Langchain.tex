@@ -1,0 +1,44 @@
+LangChain è un framework per lo sviluppo di applicazioni basate su modelli linguistici.
+
+Il framework non si limita ad offrire un'interfaccia per l'uso di modelli linguistici, ma offre anche un'interfaccia per realizzare applicazioni:
+
+\begin{itemize}
+    \item Che sappiano utilizzare informazioni che non sono state oggetto del training, tramite database esterni o internet
+    \item Che sappiano interagire con gli strumenti che uno sviluppatore gli mette a disposizione
+\end{itemize}
+
+Il framework LangChain offre due principali strumenti:
+
+\begin{itemize}
+    \item Componenti: LangChain fornisce astrazioni modulari per i componenti necessari a lavorare con i modelli linguistici. LangChain ha anche collezioni di implementazioni per tutte queste astrazioni. I componenti sono progettati per essere facili da usare, indipendentemente dall'utilizzo del resto del framework.
+    \item Catene specifiche per i casi d'uso: Le catene possono essere pensate come l'assemblaggio di questi componenti in modi particolari, al fine di realizzare al meglio un particolare caso d'uso. Sono intese come un'interfaccia ad alto livello attraverso la quale si può facilmente iniziare a lavorare con un caso d'uso specifico. Queste catene sono anche progettate per essere personalizzabili.
+\end{itemize}
+
+\subsection[I componenti]{I componenti}
+I componenti sono i mattoni fondamentali di LangChain.
+Sono progettati per essere facili da usare e integrare, indipendentemente dall'utilizzo del resto del framework.
+La prima tipologia di componenti che offre LangChain sono gli \textbf{schema}.
+\subsubsection*{Schema} Gli schema sono il modo in cui LangChain rappresenta il testo e le interazioni che si possono avere con i modelli.
+
+Negli schema ci sono quattro tipologie di oggetti:
+\begin{itemize}
+    \item \textbf{Prompts}: I prompts possono essere semplici stringhe o oggetti più complessi. Tra i prompts più utilizzati i \textit{PromptsTemplate}, ossia delle stringhe che possono essere completate da valori dinamici tramite dei placeholder e i \textit{ChatPromtsTemplate} che sono delle chat sotto forma di template. 
+    \item \textbf{ChatMassages}: Sono tipologie di messaggi che rappresentano, letteralmente, una chat con un language model. Possono essere composti da 3 tipologie di messaggi: \textit{SystemChatMessage}, messaggi che rappresentano delle informazioni di contesto per il modello; \textit{HumanChatMessage}, i messaggi che un utente ha inviato al modello; \textit{AIChatMessage}, le risposte che il modello ha inviato all'utente.
+    \item \textbf{Examples}: Sono esempi di input e output che possono essere utilizzati sia per il training di un modello, come esempi da imparare, che per la valutazione sia del modello che di una chain dopo aver ottenuto il risultato.
+    \item \textbf{Documents}: Rappresentano dei documenti che il modello può utilizzare. Possono essere utilizzati per dividere documenti reali in parti, inserirle in un database e poi essere interrogati.
+\end{itemize}
+
+Questi Schema sono i mattoni fondamentali con cui si vanno poi ad utilizzare il secondo tipo di componenti: i \textbf{modelli}.
+
+\subsubsection*{Modelli}
+I modelli sono gli oggetti con cui il framework LangChain rappresenta i modelli linguistici e le API con cui interagire con essi.
+
+Il framework divide i modelli in due categorie:
+\begin{itemize}
+    \item \textbf{Modelli di linguaggio}: Sono modelli che hanno come scopo quello di generare testo. Possono essere utilizzati per generare testo a partire da un prompt, per completare un prompt o per generare testo a partire da un documento.
+    \item \textbf{Modelli di chat}: Sono modelli che hanno come scopo quello di simulare una conversazione. 
+\end{itemize}
+
+I modelli supportati dal framweork possono essere sia derivanti da soluzioni commerciali come quelli di OpenAI, sia modelli sviluppati dalla community opensource se messi su HuggingFace.
+Per una lista completa delle integrazioni già supportate si può visitare il link \url{https://python.langchain.com/docs/integrations/llms/}.
+
