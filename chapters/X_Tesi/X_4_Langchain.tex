@@ -22,7 +22,7 @@ La prima tipologia di componenti che offre LangChain sono gli \textbf{schema}.
 
 Negli schema ci sono quattro tipologie di oggetti:
 \begin{itemize}
-    \item \textbf{Prompts}: I prompts possono essere semplici stringhe o oggetti più complessi. Tra i prompts più utilizzati i \textit{PromptsTemplate}, ossia delle stringhe che possono essere completate da valori dinamici tramite dei placeholder e i \textit{ChatPromtsTemplate} che sono delle chat sotto forma di template. 
+    \item \textbf{Prompts}: I prompts possono essere semplici stringhe o oggetti più complessi. Tra i prompts più utilizzati i \textit{PromptsTemplate} \label{PromptsTemplate}, ossia delle stringhe che possono essere completate da valori dinamici tramite dei placeholder e i \textit{ChatPromtsTemplate} che sono delle chat sotto forma di template. 
     \item \textbf{ChatMassages}: Sono tipologie di messaggi che rappresentano, letteralmente, una chat con un language model. Possono essere composti da 3 tipologie di messaggi: \textit{SystemChatMessage}, messaggi che rappresentano delle informazioni di contesto per il modello; \textit{HumanChatMessage}, i messaggi che un utente ha inviato al modello; \textit{AIChatMessage}, le risposte che il modello ha inviato all'utente.
     \item \textbf{Examples}: Sono esempi di input e output che possono essere utilizzati sia per il training di un modello, come esempi da imparare, che per la valutazione sia del modello che di una chain dopo aver ottenuto il risultato.
     \item \textbf{Documents}: Rappresentano dei documenti che il modello può utilizzare. Possono essere utilizzati per dividere documenti reali in parti, inserirle in un database e poi essere interrogati.
@@ -73,4 +73,16 @@ Tutti questi elementi sono la base su cui si basano i due componenti più import
 
 \subsubsection*{Catene}
 
-Per ``catena'' si intende un'interfaccia ad alto livello che permette di utilizzare una serie di componenti, modelli (diversi e non) o addirittura altre catene.
+Per ``catena'' si intende un'interfaccia ad alto livello che permette di utilizzare una serie di componenti, modelli (diversi e non) o addirittura altre catene in modo più o meno sequenziale.
+
+Le catene più comuni sono quelle denominate LLMChain, che combinano un \hyperref[PromptsTemplate]{PromptsTemplate} seguito da un modello e eventualmente un parser dell'output per trasformarlo in un formato diverso.
+
+Altra tipologia molto importante di catena, che è anche la tipologia di catena utilizzata per realizzare il lavoro di tesi, è quella che ha a corredo l'interazione con un retriever e quindi con un index.
+Questa tipologia di catene, al momento, ha quattro configurazioni principali:
+\begin{itemize}
+    \item Stuff: è la tipologia più semplice, in cui si prendono i documenti correlati con l'input dell'utente e li si inserisce nella memoria della conversazione. Ha come principale pro la semplicità dell'utilizzo e il costo, dato che viene fatta una sola chiamata al modello.
+    Come contro principale ha il fatto che tutti i LLM hanno una lunghezza massima di input e se i documenti (o chunk di documenti) sono troppo lunghi si potrebbero avere problemi di infattibilità della richiesta. 
+    \item Map reduce
+    \item Refine
+    \item Map-Rerank
+\end{itemize}
