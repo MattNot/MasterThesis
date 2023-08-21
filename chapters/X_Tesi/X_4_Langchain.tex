@@ -40,5 +40,37 @@ Il framework divide i modelli in due categorie:
 \end{itemize}
 
 I modelli supportati dal framweork possono essere sia derivanti da soluzioni commerciali come quelli di OpenAI, sia modelli sviluppati dalla community opensource se messi su HuggingFace.
+Nell'implementazione in python, tutti i modelli vengono utilizzati come funzioni che ricevono in input una stringa.
 Per una lista completa delle integrazioni già supportate si può visitare il link \url{https://python.langchain.com/docs/integrations/llms/}.
 
+\subsubsection*{Indici}
+
+Gli indici si riferiscono alle modalità per strutturare i documenti in modo che i modelli di linguaggio di grandi dimensioni possano interagire al meglio con essi.
+
+Per indici si intendono memorie esterne che il language model può interrogare.
+
+Il modulo riguardante gli indici include anche una serie di strumenti per maneggiare i documenti, tra i quali:
+
+\begin{itemize}
+    \item \textbf{Document loaders}: Sono classi e funzioni che caricano i documenti da una sorgente esterna, possono essere pdf, file di testo, pagine web oppure personalizzati. La lista completa si trova al link \url{https://python.langchain.com/docs/integrations/document_loaders/}
+    \item \textbf{Text splitters}: Sono classi e funzioni che prendono in input un testo (o documento) molto lungo e lo dividono in parti più piccole. La divisione può esser fatta in molti modi, dal banale carattere alla più complessa divisione in frase o paragrafi semanticamente significativi. La divisione in chunk più piccoli è necessaria per prendere i vettori degli embeddings più precisi e quindi facilitare il lavoro dei retriever.
+    \item \textbf{Retrievers}: Sono classi che prendono in input un testo e restituiscono un sottoinsieme di documenti che sono rilevanti per il testo in input. I retriever possono essere utilizzati per trovare i documenti che contengono le informazioni necessarie per rispondere a una domanda.
+    \item \textbf{Vector stores}: Sono le classi che permettono l'interazione con un database di vettori e la relativa modalità di interrogazione, possono essere utilizzati direttamente oppure tramite un retriever. Ogni database di vettori mette a disposizione una classe che ha firme comuni alle altre e può essere utilizzato in LangChain.
+\end{itemize}
+
+Un altro tipo di memorie invece sono ciò che LangChain chiama ``Memory''.
+
+\subsubsection{Memory}
+Quando si parla di ``Memory'' in LangChain ci si riferisce alla memoria, o meglio uno stato, della conversazione fin'ora che c'è stata tra l'utente e un modello.
+
+Questo tipo di memoria viene appesa ad ogni input dato all'utente, eventualmente aggiornata, ed è quindi utilizzata per lo più per contenere informazioni di contesto.
+
+I dati che vengono presi da un vector database sono inseriti in questo tipo di memoria per poi esser letti dal modello e utilizzati per generare una risposta.
+
+Essendo una memoria inserita nell'input, consuma token.
+
+Tutti questi elementi sono la base su cui si basano i due componenti più importanti di LangChain: le \textbf{catene} e gli \textbf{agenti}.
+
+\subsubsection*{Catene}
+
+Per ``catena'' si intende un'interfaccia ad alto livello che permette di utilizzare una serie di componenti, modelli (diversi e non) o addirittura altre catene.
