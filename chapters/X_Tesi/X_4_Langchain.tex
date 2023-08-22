@@ -78,11 +78,14 @@ Per ``catena'' si intende un'interfaccia ad alto livello che permette di utilizz
 Le catene più comuni sono quelle denominate LLMChain, che combinano un \hyperref[PromptsTemplate]{PromptsTemplate} seguito da un modello e eventualmente un parser dell'output per trasformarlo in un formato diverso.
 
 Altra tipologia molto importante di catena, che è anche la tipologia di catena utilizzata per realizzare il lavoro di tesi, è quella che ha a corredo l'interazione con un retriever e quindi con un index.
-Questa tipologia di catene, al momento, ha quattro configurazioni principali:
+Questa tipologia di catene, al momento, ha quattro configurazioni principali che si riferiscono a come la catena interagisce con i documenti ricevuti da un retriever:
 \begin{itemize}
-    \item Stuff: è la tipologia più semplice, in cui si prendono i documenti correlati con l'input dell'utente e li si inserisce nella memoria della conversazione. Ha come principale pro la semplicità dell'utilizzo e il costo, dato che viene fatta una sola chiamata al modello.
+    \item \textbf{Stuff}: è la tipologia più semplice, in cui si prendono i documenti correlati con l'input dell'utente e li si inserisce nella memoria della conversazione. Ha come principale pro la semplicità dell'utilizzo e il costo, dato che viene fatta una sola chiamata al modello.
     Come contro principale ha il fatto che tutti i LLM hanno una lunghezza massima di input e se i documenti (o chunk di documenti) sono troppo lunghi si potrebbero avere problemi di infattibilità della richiesta. 
-    \item Map reduce
-    \item Refine
-    \item Map-Rerank
+    \item \textbf{Map reduce}: proprio come l'algoritmo utilizzato nel mondo hadoop per il calcolo distribuito, questa tipologia di catena esegue la query su ogni documento ricevuto dal retriever e poi aggrega le varie risposte in un unico testo che viene restituita come risposta.
+    Questo tipo di catene non ha problemi di scaling, dato che ogni richiesta viene fatta su un singolo documento, ma risulta anche il suo contro principale dato il costo più alto, inoltre è possibile che si perdano informazioni realizzando l'aggregazione.
+    \item \textbf{Refine}: l'algoritmo utilizzato è proprio quello di refine, ovvero si prende il primo documento, si fornisce una prima risposta alla query dell'utente e poi ogni documento successivo aggiorna la risposta migliorandola con nuove informazioni derivanti dal nuovo documento.
+    Questo tipo di catene ha come pro il fatto che non si perdono informazioni e che il costo è più basso rispetto a map reduce, ma ha come contro il fatto che non è possibile parallelizzare in modo semplice, dato che la risposta deve essere aggiornata sequenzialmente.
+    \item \textbf{Map-Rerank}: diversamente dagli altri algoritmi questa tipologia di catene non combina più documenti per dare una singola risposta ma esegue la query su tutti i documenti e fa una classifica della risposta che, secondo il LLM, è più completa. La migliore viene poi restituita come risposta.
+    Come costi è simile al refine, ma ha dei casi d'uso diversi dai precedenti, infatti questa tipologia è utilizzabile quando si sa che la risposta migliore è sempre contenuta in un unico documento. 
 \end{itemize}
