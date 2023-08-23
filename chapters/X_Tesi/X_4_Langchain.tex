@@ -89,3 +89,22 @@ Questa tipologia di catene, al momento, ha quattro configurazioni principali che
     \item \textbf{Map-Rerank}: diversamente dagli altri algoritmi questa tipologia di catene non combina più documenti per dare una singola risposta ma esegue la query su tutti i documenti e fa una classifica della risposta che, secondo il LLM, è più completa. La migliore viene poi restituita come risposta.
     Come costi è simile al refine, ma ha dei casi d'uso diversi dai precedenti, infatti questa tipologia è utilizzabile quando si sa che la risposta migliore è sempre contenuta in un unico documento. 
 \end{itemize}
+
+Per la realizzazione della tesi è stata utilizzata la tipologia di catena ``Refine'' poiché i libri trattano per lo più argomenti simili e quindi è possibile che la risposta migliore esca fuori dal miglioramento della prima risposta che si trova.
+
+\subsubsection*{Agenti}
+
+Alcune applicazioni hanno casi d'uso che non possono essere realizzati con una singola catena, ma hanno bisogno di un sistema più complesso e meno lineare.
+
+Per questi casi nascono gli agenti, ovvero una serie di modalità di interrogare un LLM in modo tale che sia lui a decidere i prossimi passi da realizzare all'interno di un ragionamento più ampio.
+
+Langchain offre gli strumenti necessari per implementare gli agenti, nel dettaglio:
+
+\begin{itemize}
+    \item \textbf{Agent}: è l'interfaccia che rappresenta un agente, è un wrapper attorno ad un modello che prende in input un testo e restituisce la prossima azione da svolgere.
+    \item \textbf{Tool}: sono funzioni che rappresentano delle azioni che un agente può effettuare, questo tipo di azioni possono essere funzioni python anche molto complesse e includere, per esempio, anche chiamate ad altri llm o agenti. Sono il modo in cui un programmatore può iniettare codice all'interno del ragionamento di un modello.
+    \item \textbf{Tollkits}: sono aggregazioni di tool. Sono necessari quando i tool sono molti e, dato il limite di token in ingresso dei modelli, si vuole rendere più leggero il contesto.
+    \item \textbf{Agent Executor}: sono le classi che mettono insieme i tool e gli agenti, sono loro che realizzano il ragionamento e coordinano le azioni del agent.
+\end{itemize}
+
+Gli acenti possono essere di vario tipo che possono performare meglio su alcune tipologie di task rispetto ad altre, per una lista completa si può visitare il link \url{https://python.langchain.com/docs/modules/agents/agent_types/}.
