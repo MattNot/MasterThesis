@@ -1,0 +1,26 @@
+I costi di un sistema di information retrieval basato su LLM possono essere divisi in due tipologie: fissi e di utilizzo.
+
+I costi fissi sono quelli che non dipendono dal numero di query effettuate, ma solo dal numero di documenti indicizzati e dalla loro lunghezza.
+
+Per il lavoro di tesi sono state utilizzate le API di OpenAI per semplicità di utilizzo e anche perché non richiedono capacità computazionali in loco.
+
+Le api di OpenAI inoltre hanno un diverso costo rispetto al modello utilizzato. 
+
+Il costo di indicizzazione utilizzando i modelli di OpenAI è di:
+
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        Model	& Usage \\
+        \hline
+        Ada v2	& \$0.0001\/1000 tokens \\
+        \hline
+    \end{tabular}
+\end{center}
+
+OpenAI stessa mette a disposizione altri modelli di embeddings ma ne sconsiglia l'utilizzo.
+
+
+Se si fosse utilizzato un modello di LLM proprietario o di terze parti in modo diretto sarebbe stato necessario un server con una GPU per poter effettuare le query in modo efficiente. In tal caso i costi si sarebbero ammortizzati sul lungo periodo.
+
+
