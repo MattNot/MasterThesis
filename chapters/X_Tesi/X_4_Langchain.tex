@@ -112,3 +112,30 @@ Gli agenti possono essere di vario tipo che possono performare meglio su alcune 
 Nel lavoro di tesi non è stato utilizzato un agente ma, sicuramente, in sviluppi futuri si potrebbe pensare di utilizzarne uno per migliorare l'esperienza utente.
 
 \subsection[Chain specifiche]{Le chain ad uso specifico}
+
+Le chain ad uso specifico sono delle catene che sono state realizzate per risolvere un particolare caso d'uso e facilizzare l'esperienza di sviluppo.
+
+Ne esistono di vario tipo, per una lista completa si può visitare il link \url{https://docs.langchain.com/docs/category/use-cases}.
+
+In questo lavoro di tesi ci concentreremo sul caso d'uso del Question Answering Over Docs, ossia una catena pensata e realizzata per rispondere a domande a partire da documenti.
+
+\subsubsection[QA Over Docs]{Question Answering Over Docs}
+
+La procedura per convertire dati grezzi e non strutturati in una catena di domande e risposte (Question Answering) si presenta nel seguente modo:
+
+\begin{enumerate}
+    \item \textbf{Fase di Caricamento}: Inizialmente è necessario caricare i dati. I dati non strutturati possono essere prelevati da diverse fonti. Utilizziamo l'integrazione con LangChain per esplorare l'insieme completo di strumenti di caricamento. Ciascuno di questi strumenti restituisce i dati sotto forma di un Documento LangChain.
+    \item \textbf{Fase di Suddivisione}: Gli strumenti di suddivisione del testo frammentano i Documenti in parti di dimensioni specificate.
+    \item \textbf{Fase di Archiviazione}: L'archiviazione (ad esempio, spesso tramite un vectorstore) conterrà e spesso incorporerà le parti precedentemente suddivise.
+    \item \textbf{Fase di Recupero}: L'applicazione recupera le parti precedentemente archiviate (spesso utilizzando incorporamenti simili a quelli della domanda in ingresso).
+    \item \textbf{Fase di Generazione}: Un Linguaggio Modello di Grande Dimensione (LLM) produce una risposta utilizzando uno stimolo che include la domanda stessa e i dati recuperati precedentemente.
+\end{enumerate}
+
+\begin{center}
+    \begin{figure}[H]
+        \includegraphics[height=0.18\pdfpageheight, width=0.8\pdfpagewidth]{images/QAchain.jpeg}\label{fig:qaoverdocs}
+        \caption[QA Over Docs]{Il diagramma di flusso che descrive la catena QA Over Docs.}
+    \end{figure}
+\end{center}
+
+Per il lavoro di tesi, in realtà, della catena sono state utilizzate le fasi dalla 4 in poi dato che bisognava realizzare un certo preprocessing sui dati, come aggiungere dei metadati.

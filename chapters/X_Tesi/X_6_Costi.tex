@@ -20,6 +20,30 @@ Il costo di indicizzazione utilizzando i modelli di OpenAI è di:
 
 OpenAI stessa mette a disposizione altri modelli di embeddings ma ne sconsiglia l'utilizzo.
 
+Il costo totale dell'indicizzazione è stato intorno ai 60\$.
+
+Per quanto riguarda invece il costo di utilizzo, OpenAI mette a disposizione diversi modelli con diversi costi descritti nella tabella seguente:
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Family & Model	& Input cost & Output cost \\
+        \hline
+        GPT-4 & 8k context	& \$0.03 / 1000 tokens &  	\$0.06 / 1000 tokens \\
+        \hline
+        & 32k context	& \$0.06 / 1000 tokens &  	\$0.12 / 1000 tokens \\
+        \hline
+        GPT-3.5 Turbo & 4k context	& \$0.0015 / 1000 tokens &  	\$0.002 / 1000 tokens \\
+        \hline
+        & 16k context	& \$0.003 / 1000 tokens &  	\$0.004 / 1000 tokens \\
+        \hline
+
+        GPT-3 & davinci	& \$0.0120 \/ 1000 tokens &  	\$0.0120  \/ 1000 tokens \\
+        \hline
+    \end{tabular}
+\end{center}
+
+
 
 Se si fosse utilizzato un modello di LLM proprietario o di terze parti in modo diretto sarebbe stato necessario un server con una GPU per poter effettuare le query in modo efficiente. In tal caso i costi si sarebbero ammortizzati sul lungo periodo.
 
