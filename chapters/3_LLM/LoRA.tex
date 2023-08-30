@@ -1,0 +1,16 @@
+Low-rank Adaptation \cite{LoRA} è un modo per rendere il modello linguistico più adattabile ed efficiente. Invece di addestrare nuovamente l'intero modello per ogni compito, LoRA congela il modello pre-addestrato e aggiunge matrici addestrabili più piccole a ogni strato del modello. Queste matrici aiutano il modello ad adattarsi a compiti diversi senza modificare tutti i parametri.
+
+Utilizzando LoRA, le organizzazioni possono ridurre significativamente il numero di parametri addestrabili in un modello, rendendolo più facile e veloce da usare per compiti diversi. Inoltre, consente di risparmiare memoria sul computer o sul dispositivo che esegue il modello.
+
+\subsubsection{Come funziona}
+
+La tecnica LoRA si effettua su un modello già pre-trained, come può essere GPT-3, e congela i pesi del modello affinché si possa mantenere la conoscenza del LLM.
+
+Si introducono, parallelamente a quelle dei pesi, due matrici di decomposizione (A e B) di oridini di grandezza più piccole rispetto alle originali per ogni layer dell'architettura del Transformer.
+
+La matrice A è utilizzata per adattare la ``query projection matrix'' (Wq) mentre la B è utilizzata per adattare la ``value projection matrix'' (Wv).
+
+Queste matrici vengono ottimizzate per migliorare le performance del modello su un compito specifico, mentre i pesi del modello pre-trained rimangono invariati.
+Questa metodologia permette di ridurre il numero di parametri addestrabili, rendendo il modello più efficiente e adattabile e inoltre permette un ``hot-swap'' delle matrici per utilizzare lo stesso modello su task diversi semplicemente cambiando le matrici.
+
+Differentemente dal fine-tuning quindi LoRA non aggiunge altrettanti parametri addestrabili e non richiede il calcolo di un gradiente e consenguente backpropagation, nel paper di Microsoft \cite{LoRA} vengono riportati tempi di addestramento di tre volte più veloci e una riduzione di \textbf{oltre dieci mila volte} il numero di parametri addestrabili su GPT-3 175B.
