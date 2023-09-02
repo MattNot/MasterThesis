@@ -59,3 +59,21 @@ In output vengono restituiti i documenti che il modello ha preso in considerazio
     \caption[Ingestion]{Come funziona una chain di tipo refine.}
 \end{figure}
 
+\subsubsection{La scelta di utilizzare le API di OpenAI}
+
+Quando ci si approccia allo sviluppo di un sistema basato su LLM si hanno due principali scelte:
+\begin{itemize}
+    \item Utilizzare un modello installato in locale
+    \item Utilizzare un modello tramite API di terze parti
+\end{itemize}
+
+La prima scelta è quella che garantisce maggiore flessibilità e controllo sul modello, ma richiede un hardware molto potente e un'ottima conoscenza di come funzionano i LLM.
+La seconda scelta è quella che garantisce maggiore semplicità di utilizzo e un'ottima qualità dei risultati, ma richiede un budget per le API.
+
+Entrambe le scelte, comunque, impongono l'ulteriore scelta di scegliere tra un modello commerciale e un modello opensource.
+
+Nel caso si scelga un modello opensource uno dei metodi più utilizzati è quello di utilizzare le utilies che mette a disposizione il noto sito di repository per l'AI HuggingFace \url{https://huggingface.co/} che con la sua libreria "Transformers" permette sia di effettuare il download di un modello opensource che di utilizzarne uno su una macchina di HuggingFace tramite il suo HuggingFaceHub.
+La scelta di un modello opensource pone delle questioni da tenere in considerazione come la non uniformità su come il modello si utilizzi, per esempio moltissime differenze si riscontrano quando si vuole effettuare un fine-tuning e ogni modello ha un formato specifico con cui deve essere creato il dataset o anche il fatto che magari un modello ha bisogno di una specifica versione di alcune dipendenze che magari altri modelli non supportano.
+
+Utilizzando invece un modello commerciale, come quelli di OpenAI, si ha la certezza che il modello sia sempre aggiornato e che sia sempre disponibile, inoltre si ha la certezza che il modello sia sempre utilizzabile con le stesse modalità e che non ci siano problemi di dipendenze o di formati di dataset.
+Nel lavoro di tesi, per esempio, è stato utilizzato il modello ``text-davinci-003'' di OpenAI ma a livello programmatico nulla sarebbe cambiato se io avessi utilizzato un modello minore come il ``ada'' o il ``babbage''.
