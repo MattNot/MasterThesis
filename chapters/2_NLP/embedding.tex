@@ -1,15 +1,15 @@
 Un concetto fondamentale nel Trattamento del Linguaggio Naturale (Natural Language Processing, NLP) è quello degli "embedding" di parole. Gli embedding sono rappresentazioni numeriche che catturano le caratteristiche semantiche delle parole o dei testi. Questi vettori numerici consentono alle macchine di elaborare il linguaggio naturale in termini comprensibili per i modelli di apprendimento automatico. Gli embedding hanno rivoluzionato il modo in cui le parole vengono trattate nell'NLP, consentendo la creazione di modelli che possono cogliere le relazioni semantiche tra le parole e le sfumature di significato.
 
-Evoluzione delle rappresentazioni vettoriali
+\subsubsection{Evoluzione delle rappresentazioni vettoriali}
 L'idea di rappresentare parole come vettori numerici ha radici nella linguistica computazionale degli anni '90. Tuttavia, la svolta nell'uso di embedding di parole è arrivata con l'avvento delle tecniche di apprendimento profondo. In particolare, l'algoritmo Word2Vec ha rivoluzionato il modo in cui le parole vengono codificate come vettori. Word2Vec è stato introdotto da Mikolov et al. nel 2013 ed è diventato un pilastro nell'NLP.
 
-Word2Vec e apprendimento distribuito
+\subsubsection{Word2Vec e apprendimento distribuito}
 Word2Vec è un modello di apprendimento automatico che genera embedding di parole basati sulla distribuzione delle parole nel contesto. L'idea centrale è che parole simili tendono ad apparire in contesti simili. Word2Vec offre due approcci principali: Continuous Bag of Words (CBOW) e Skip-gram. Nel modello CBOW, l'obiettivo è prevedere una parola dato il suo contesto, mentre nel modello Skip-gram, l'obiettivo è prevedere il contesto dati una parola. L'addestramento di Word2Vec consente di regolare i vettori in modo che le parole simili abbiano vettori simili.
 
-Trasferimento di conoscenza e modelli pre-addestrati
+\subsubsection{Trasferimento di conoscenza e modelli pre-addestrati}
 Una delle chiavi per il successo delle rappresentazioni vettoriali come Word2Vec è la capacità di trasferire conoscenza. I modelli pre-addestrati possono essere utilizzati come punto di partenza per task specifici. Ad esempio, un modello Word2Vec addestrato su un ampio corpus può essere ulteriormente adattato per risolvere problemi specifici, come la classificazione di sentimenti o il riconoscimento di entità.
 
-Oltre Word2Vec: Modelli Transformer
+\subsubsection{Oltre Word2Vec: Modelli Transformer}
 Negli anni successivi a Word2Vec, il campo ha visto un ulteriore avanzamento con l'introduzione dei modelli Transformer. Questi modelli, come BERT (Bidirectional Encoder Representations from Transformers), utilizzano un'architettura di auto-attenzione per catturare relazioni contestuali tra le parole in modo bidirezionale. Questi modelli hanno superato le prestazioni dei metodi precedenti in molte attività NLP, dimostrando l'importanza di modelli complessi e dati di addestramento su vasta scala.
 
 Nel corso della sua evoluzione, il concetto di embedding ha cambiato radicalmente il modo in cui le parole vengono rappresentate e utilizzate nell'NLP. Dall'introduzione di Word2Vec all'ascesa dei modelli Transformer, le rappresentazioni vettoriali hanno alimentato l'innovazione e reso possibili progressi significativi nelle applicazioni NLP.
