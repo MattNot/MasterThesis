@@ -121,7 +121,7 @@ In questo lavoro di tesi ci concentreremo sul caso d'uso del Question Answering 
 
 \subsubsection[QA Over Docs]{Question Answering Over Docs}
 
-La procedura per convertire dati grezzi e non strutturati in una catena di domande e risposte (Question Answering) si presenta nel seguente modo:
+La procedura per convertire dati grezzi e non strutturati in una catena di domande e risposte (Question Answering) si presenta nel seguente modo (figura~\ref{fig:qaoverdocs}):
 
 \begin{enumerate}
     \item \textbf{Fase di Caricamento}: Inizialmente è necessario caricare i dati. I dati non strutturati possono essere prelevati da diverse fonti. Utilizziamo l'integrazione con LangChain per esplorare l'insieme completo di strumenti di caricamento. Ciascuno di questi strumenti restituisce i dati sotto forma di un Documento LangChain.
@@ -133,8 +133,9 @@ La procedura per convertire dati grezzi e non strutturati in una catena di doman
 
 \begin{center}
     \begin{figure}[H]
-        \includegraphics[height=0.18\pdfpageheight, width=0.8\pdfpagewidth]{images/QAchain.jpeg}\label{fig:qaoverdocs}
+        \includegraphics[height=0.18\pdfpageheight, width=0.8\pdfpagewidth]{images/QAchain.jpeg}
         \caption[QA Over Docs]{Il diagramma di flusso che descrive la catena QA Over Docs.}
+        \label{fig:qaoverdocs}
     \end{figure}
 \end{center}
 

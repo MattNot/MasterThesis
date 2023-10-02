@@ -18,43 +18,31 @@ Per far ciò la chain prende in considerazione i 4 chunk di documenti che tramit
 
 Utilizzando langchain in modalità verbosa si può apprezzare il ragionamento che porta alla risposta finale:
 
-\begin{lstlisting}[breaklines]
-    > Entering new RefineDocumentsChain chain...
-
-
-> Entering new LLMChain chain...
-Prompt after formatting:
-Context information is below. 
-------------
-<PRIMO DOCUMENTO>
-------------
-Given the context information and not prior knowledge, answer the question: Who won the battle of Hastings? Use only context informations.
-
-\end{lstlisting}
-
+\begin{figure}[H]
+    \includegraphics[width=0.7\pdfpagewidth]{images/refine_step_1.png}
+\end{figure}
 Questo è il primo passaggio dell'algoritmo di Refine e il primo documento viene inserito all'interno della input per intero, sono presenti inoltre alcune informazioni che LangChain inserisce per istruire il modello a non fare più di ciò che gli si sta chiedendo, questo è un problema comune sopratutto quando si modifica un parametro particolare degli LLM che viene definito "temperatura" ed indica quanto il modello debba utilizzare la sua parte creativa per dare la risposta.
 
-\begin{lstlisting}[breaklines]
-    > Entering new LLMChain chain...
-Prompt after formatting:
-The original question is as follows: Who won the battle of Hastings? Use only context informations.
-We have provided an existing answer: 
-Duke William won the battle of Hastings.
-We have the opportunity to refine the existing answer (only if needed) with some more context below.
-------------
-<Nth DOCUMENTO>
-------------
-Given the new context, refine the original answer to better answer the question. If the context isn't useful, return the original answer.
 
-> Finished chain.
-\end{lstlisting}
+\begin{figure}[H]
+    \includegraphics[width=0.7\pdfpagewidth]{images/refine_step_2.png}
+\end{figure}
 
-Questo è invece come avviene il processo di refine, come descritto in precedenza viene eseguito per ogni documento recuperato dal database vettoriale.
-
+Questo è invece come avviene il processo di refine.
+È possibile osservare come l'input iniziale al sistema viene cambiato aggiungendogli la prima risposta che il sistema è riuscito a trarre ``The Normans won the battle of Hastings'' e viene detto al modello che abbiamo la possibilità di migliorare la risposta con il contesto aggiuntivo dato dall'n-esimo documento (in questo caso il secondo). Questo passaggio viene effettuato per tutti i documenti che il SelfQueryRetriever ha trovato.
+\newpage
 Alla fine ciò che si ottiene è la risposta finale, che in questo caso è:
 
-\textit{Duke William won the battle of Hastings on October 14th, 1066, defeating the English army led by King Harold Godwinson and his brother, Tostig, and Norwegian forces led by King Harold Hardrada. His victory ultimately led to his coronation as King of England two months later on Christmas Day.}
+\begin{figure}[H]
+    \includegraphics[width=0.7\pdfpagewidth]{images/refine_step_3.png}
+\end{figure}
 
 \subsection{I documenti presi in considerazione}
-Per ogni query e risultato è possibile ottenere la lista dei chunk presi in considerazione dal sistema, per rispondere a questa domanda i chunk appartenevano a due libri diversi PPN1736870556.pdf, il cui titolo è ``Egland's story'' del 1918 e PPN1736868691.pdf, il cui titolo è ``Outlines of British history'' del 1885.
+Per ogni query e risultato è possibile ottenere la lista dei chunk presi in considerazione dal sistema, per rispondere a questa domanda i chunk appartenevano a due libri diversi PPN1736870556.pdf, il cui titolo è ``Egland's story'' del 1918 e PPN1736868691.pdf, il cui titolo è ``Outlines of British history'' del 1885. Il frontespizio di entrambi i libri è visibile nella figura ~\ref{fig:libri}.
 Oltre al semplice nome viene restituita anche la pagina del libro nella quale quel chunk era contenuto oltre a tutti i metadati inseriti in fase di ingestion.
+\begin{figure}[H]
+    \includegraphics[width=0.5\textwidth]{images/engstory.png}
+    \includegraphics[width=0.5\textwidth]{images/b_history.png}
+    \caption{Il frontespizio dei due libri presi in considerazione per la query ``Who won the battle of Hastings?''}
+    \label{fig:libri}
+\end{figure}

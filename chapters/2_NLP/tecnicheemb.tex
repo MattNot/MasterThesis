@@ -1,11 +1,13 @@
 Le tecniche di embedding costituiscono un pilastro essenziale nel Trattamento del Linguaggio Naturale (Natural Language Processing, NLP). Queste metodologie convertono le parole e i testi in rappresentazioni numeriche, consentendo alle macchine di trattare il linguaggio umano in formato comprensibile. Dall'introduzione di Word2Vec a soluzioni più avanzate come BERT e GPT, il campo delle tecniche di embedding ha segnato un'evoluzione significativa.
 
 \subsubsection{Word2Vec: Catturare il contesto}
-Word2Vec, introdotto da Mikolov et al. nel 2013, ha svolto un ruolo cruciale nell'evoluzione delle rappresentazioni vettoriali. Questa tecnica adotta un approccio basato sulla predizione del contesto: attraverso l'analisi delle parole circostanti, Word2Vec crea embedding che catturano le relazioni semantiche tra le parole. Questi embedding sono capaci di rappresentare sinonimi e relazioni tra parole simili.
+Word2Vec, introdotto da Mikolov et al.\ nel 2013\cite{w2v}, ha svolto un ruolo cruciale nell'evoluzione delle rappresentazioni vettoriali. Questa tecnica adotta un approccio basato sulla predizione del contesto: attraverso l'analisi delle parole circostanti, Word2Vec crea embedding che catturano le relazioni semantiche tra le parole. Questi embedding sono capaci di rappresentare sinonimi e relazioni tra parole simili.
+Nelle figura~\ref{fig:semanticandsintatic} è possibile osservare la differenza tra un'associazione semantica e una sintattica. La prima è una relazione che mette insieme parole come "Uomo" e "Donna" per contrarietà di genere, mentre la seconda è una relazione che mette insieme parole come "Grande" e "Grandissimo" per similitudine sintattica.
 \begin{center}
     \begin{figure}[H]
         \includegraphics[width=0.6\pdfpagewidth]{images/semanticandsintatic.jpg}
         \caption{La differenza tra un'associazione semantica e una sintattica}
+        \label{fig:semanticandsintatic}
     \end{figure}    
 \end{center}
 

@@ -22,7 +22,19 @@ Feedforward Neural Network: Simile all'encoder, il decoder ha anche strati di re
 
 In entrambi gli encoder e decoder, tra i vari strati, sono spesso utilizzati la normalizzazione batch e i collegamenti residui per facilitare l'allenamento e mitigare i problemi di vanishing gradient.
 
+Nella figura~\ref{fig:transformer} è possibile vedere la struttura dell'architettura Transformer con a sinistra la parte di encoder e a destra la parte di decoder.
+
 Quando si tratta di compiti specifici, come la traduzione automatica, il modello viene addestrato a generare la sequenza di output passo dopo passo, prendendo in considerazione l'output generato in passaggi precedenti. Durante l'allenamento, viene utilizzata una funzione di perdita che misura quanto bene l'output generato si avvicina all'output di riferimento desiderato.
+
+\begin{center}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\pdfpagewidth]{images/Transformer.png}
+        \caption{La struttura dell'architettura Transformer}
+        \label{fig:transformer}
+    \end{figure}
+    
+\end{center}
 
 \subsection{Applicazioni nell'NLP}
 I Transformer sono stati applicati con successo a molteplici task di NLP, tra cui traduzione automatica, analisi del sentimento, generazione di testo, risposta alle domande e molto altro. Grazie alla capacità dell'architettura di catturare relazioni complesse, i modelli basati su Transformer hanno raggiunto o superato le prestazioni umane in molti di questi task.

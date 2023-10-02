@@ -5,12 +5,22 @@ Word2Vec sfrutta il principio di distribuzione del linguaggio naturale, che affe
 
 \subsubsection{Continuous Bag of Words (CBOW) e Skip-gram}
 Word2Vec offre due approcci principali: Continuous Bag of Words (CBOW) e Skip-gram. Nel modello CBOW, l'algoritmo cerca di prevedere una parola data una finestra di contesto, utilizzando il contesto per stimare la parola obiettivo. Nel modello Skip-gram, invece, l'obiettivo è prevedere il contesto (cioè le parole circostanti) data una parola. Entrambi gli approcci cercano di ottimizzare la capacità dell'algoritmo di rappresentare le parole in modo accurato.
-
+Nella figura \ref{fig:cbow} è possibile osservare un esempio di modello CBOW, mentre nella figura \ref{fig:skipgram} è possibile osservare un esempio di modello Skip-gram.
 \begin{center}
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\pdfpagewidth]{images/skipgram.jpg}
         \caption{Esempio di modello Skip-gram}
+        \label{fig:skipgram}
+    \end{figure}
+\end{center}
+
+\begin{center}
+    \begin{figure}[H]
+        \centering
+        \includegraphics{images/CBOW.png}
+        \caption{Esempio di modello Continous Bag of Words (CBOW)}
+        \label{fig:cbow}
     \end{figure}
 \end{center}
 
